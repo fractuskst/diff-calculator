@@ -1,8 +1,11 @@
 {
   "name": "@hexlet/code",
   "version": "1.0.0",
+  "bin": {
+    "gendiff": "bin/gendiff.js"
+  },
   "description": "[![Actions Status](https://github.com/fractuskst/frontend-project-46/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/fractuskst/frontend-project-46/actions)",
-  "main": "index.js",
+  "main": "gendiff.js",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,6 +13,16 @@
   "author": "Konstantin Kovalyov",
   "license": "ISC",
   "dependencies": {
-    "commander": "^12.0.0"
+    "commander": "^12.0.0",
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3.0.2",
+    "@eslint/js": "^9.1.1",
+    "eslint": "^8.57.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.29.1",
+    "globals": "^15.0.0",
+    "prettier": "^3.2.5"
   }
 }
