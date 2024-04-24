@@ -1,7 +1,7 @@
 import path from 'path';
 
 const convertPath = (filepath) => {
-  if (!path.isAbsolute(path)) {
+  if (!path.isAbsolute(filepath)) {
     return path.resolve(filepath);
   }
   return filepath;

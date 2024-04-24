@@ -17,7 +17,7 @@ const genDiff = (filepath1, filepath2) => {
   sortedKeys.forEach((key) => {
     if (_.has(json1, key) && _.has(json2, key)) {
       if (json1[key] === json2[key]) {
-        result += `${key}: ${json1[key]}\n`;
+        result += `  ${key}: ${json1[key]}\n`;
       } else {
         result += `- ${key}: ${json1[key]}\n`;
         result += `+ ${key}: ${json2[key]}\n`;
