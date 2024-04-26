@@ -1,7 +1,5 @@
 # Проект "Вычислитель отличий":
 [![Actions Status](https://github.com/fractuskst/frontend-project-46/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/fractuskst/frontend-project-46/actions)
-
-
 [![Maintainability](https://api.codeclimate.com/v1/badges/30aaf0019a10a30353b0/maintainability)](https://codeclimate.com/github/fractuskst/frontend-project-46/maintainability)
 
 ## Описание проекта
