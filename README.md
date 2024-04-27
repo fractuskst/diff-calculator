@@ -2,6 +2,7 @@
 [![Actions Status](https://github.com/fractuskst/frontend-project-46/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/fractuskst/frontend-project-46/actions)
 [![Actions Status](https://github.com/fractuskst/frontend-project-46/actions/workflows/node.js.yml/badge.svg)](https://github.com/fractuskst/frontend-project-46/actions)
 [![Maintainability](https://api.codeclimate.com/v1/badges/30aaf0019a10a30353b0/maintainability)](https://codeclimate.com/github/fractuskst/frontend-project-46/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/30aaf0019a10a30353b0/test_coverage)](https://codeclimate.com/github/fractuskst/frontend-project-46/test_coverage)
 
 ## Описание проекта
 __"Вычислитель отличий"__ – программа, определяющая разницу между двумя структурами данных. Это популярная задача, для решения которой существует множество онлайн сервисов, например http://www.jsondiff.com/. Подобный механизм используется при выводе тестов или при автоматическом отслеживании изменений в конфигурационных файлах.
