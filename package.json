@@ -8,12 +8,13 @@
   "main": "gendiff.js",
   "type": "module",
   "scripts": {
-    "test": "npx jest"
+    "test": "npx jest --watch"
   },
   "author": "Konstantin Kovalyov",
   "license": "ISC",
   "dependencies": {
     "commander": "^12.0.0",
+    "js-yaml": "^4.1.0",
     "lodash": "^4.17.21"
   },
   "devDependencies": {
