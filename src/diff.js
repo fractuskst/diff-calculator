@@ -1,31 +1,36 @@
 import fs from 'fs';
+import path from 'path';
 import _ from 'lodash';
-import parseFile from './parse.js';
+import parse from './parsers.js';
+
+const getData = (filepath) => {
+  const absolutePath = path.resolve(process.cwd(), filepath);
+  return fs.readFileSync(absolutePath, 'utf-8');
+};
+
+const getFormat = (filepath) => path.extname(filepath);
 
 const genDiff = (filepath1, filepath2) => {
   let result = '';
 
-  const file1 = fs.readFileSync(filepath1, 'utf-8');
-  const file2 = fs.readFileSync(filepath2, 'utf-8');
+  const file1 = parse(getData(filepath1), getFormat(filepath1));
+  const file2 = parse(getData(filepath2), getFormat(filepath2));
 
-  const json1 = parseFile(file1);
-  const json2 = parseFile(file2);
-
-  const keys = _.union(Object.keys(json1), Object.keys(json2));
+  const keys = _.union(Object.keys(file1), Object.keys(file2));
   const sortedKeys = _.sortBy(keys);
 
   sortedKeys.forEach((key) => {
-    if (_.has(json1, key) && _.has(json2, key)) {
-      if (json1[key] === json2[key]) {
-        result += `    ${key}: ${json1[key]}\n`;
+    if (_.has(file1, key) && _.has(file2, key)) {
+      if (file1[key] === file2[key]) {
+        result += `    ${key}: ${file1[key]}\n`;
       } else {
-        result += `  - ${key}: ${json1[key]}\n`;
-        result += `  + ${key}: ${json2[key]}\n`;
+        result += `  - ${key}: ${file1[key]}\n`;
+        result += `  + ${key}: ${file2[key]}\n`;
       }
-    } else if (_.has(json2, key)) {
-      result += `  + ${key}: ${json2[key]}\n`;
+    } else if (_.has(file2, key)) {
+      result += `  + ${key}: ${file2[key]}\n`;
     } else {
-      result += `  - ${key}: ${json1[key]}\n`;
+      result += `  - ${key}: ${file1[key]}\n`;
     }
   });
   return `{\n${result}}`;
