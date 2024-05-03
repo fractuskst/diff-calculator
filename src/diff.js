@@ -3,7 +3,7 @@ import path from 'path';
 import { cwd } from 'process';
 import makeDiffTree from './makeDiffTree.js';
 import parse from './parsers.js';
-import format from './formatters/format.js';
+import format from './formatters/index.js';
 
 const getData = (filepath) => {
   const absolutePath = path.resolve(cwd(), filepath);

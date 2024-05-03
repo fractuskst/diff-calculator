@@ -23,7 +23,7 @@ const stylish = (diff) => {
       switch (node.type) {
         case 'added':
           return `${startIndent}+ ${node.key}: ${stringify(node.value, depth + 1)}`;
-        case 'deleted':
+        case 'removed':
           return `${startIndent}- ${node.key}: ${stringify(node.value, depth + 1)}`;
         case 'unchanged':
           return `${startIndent}  ${node.key}: ${stringify(node.value, depth + 1)}`;

@@ -13,7 +13,7 @@ const makeDiffTree = (data1, data2) => {
       result.type = 'added';
       result.value = newValue;
     } else if (!_.isUndefined(oldValue) && _.isUndefined(newValue)) {
-      result.type = 'deleted';
+      result.type = 'removed';
       result.value = oldValue;
     } else if (_.isEqual(oldValue, newValue)) {
       result.type = 'unchanged';
