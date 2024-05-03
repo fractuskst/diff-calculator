@@ -8,7 +8,7 @@
   "main": "gendiff.js",
   "type": "module",
   "scripts": {
-    "test": "npx jest --watch"
+    "test": "npx jest"
   },
   "author": "Konstantin Kovalyov",
   "license": "ISC",
