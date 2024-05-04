@@ -16,7 +16,7 @@ const makeDiffTree = (file1, file2) => {
       return { key, type: 'unchanged', value: oldValue };
     }
     if (_.isPlainObject(file1[key]) && _.isPlainObject(file2[key])) {
-      return { key, type: 'nested', value: makeDiffTree(oldValue, newValue) };
+      return { key, type: 'nested', children: makeDiffTree(oldValue, newValue) };
     }
     return {
       key,

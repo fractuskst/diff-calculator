@@ -33,7 +33,7 @@ const stylish = (diff) => {
             `${startIndent}+ ${node.key}: ${stringify(node.newValue, depth + 1)}`,
           ].join('\n');
         case 'nested':
-          return `${startIndent}  ${node.key}: ${iter(node.value, depth + 1)}`;
+          return `${startIndent}  ${node.key}: ${iter(node.children, depth + 1)}`;
         default:
           throw new Error(`Unknown node type (${node.type})!`);
       }

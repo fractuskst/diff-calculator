@@ -26,7 +26,7 @@ const plain = (diff) => {
           case 'changed':
             return `Property ${stringify(newPath)} was updated. From ${stringify(item.oldValue)} to ${stringify(item.newValue)}`;
           case 'nested':
-            return `${iter(item.value, newPath)}`;
+            return `${iter(item.children, newPath)}`;
           default:
             throw new Error(`Unknown item type: ${item.type}`);
         }
