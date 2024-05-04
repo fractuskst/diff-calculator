@@ -1,35 +1,31 @@
 import _ from 'lodash';
 
-const makeDiffTree = (data1, data2) => {
-  const allKeys = _.union(Object.keys(data1), Object.keys(data2));
-  const sortedKeys = _.sortBy(allKeys);
-
-  return sortedKeys.map((key) => {
-    const result = {};
-    const oldValue = data1[key];
-    const newValue = data2[key];
-
-    if (_.isUndefined(oldValue) && !_.isUndefined(newValue)) {
-      result.type = 'added';
-      result.value = newValue;
-    } else if (!_.isUndefined(oldValue) && _.isUndefined(newValue)) {
-      result.type = 'removed';
-      result.value = oldValue;
-    } else if (_.isEqual(oldValue, newValue)) {
-      result.type = 'unchanged';
-      result.value = oldValue;
-    } else if (_.isPlainObject(oldValue) && _.isPlainObject(newValue)) {
-      result.type = 'nested';
-      result.value = makeDiffTree(oldValue, newValue);
-    } else {
-      result.type = 'changed';
-      result.oldValue = oldValue;
-      result.newValue = newValue;
+const makeDiffTree = (file1, file2) => {
+  const keys = _.union(Object.keys(file1), Object.keys(file2));
+  const sortedKeys = _.sortBy(keys);
+  const result = sortedKeys.map((key) => {
+    const oldValue = file1[key];
+    const newValue = file2[key];
+    if (!_.has(file1, key) && _.has(file2, key)) {
+      return { key, type: 'added', value: newValue };
     }
-
-    result.key = key;
-    return result;
+    if (_.has(file1, key) && !_.has(file2, key)) {
+      return { key, type: 'removed', value: oldValue };
+    }
+    if (_.isEqual(file1[key], file2[key])) {
+      return { key, type: 'unchanged', value: oldValue };
+    }
+    if (_.isPlainObject(file1[key]) && _.isPlainObject(file2[key])) {
+      return { key, type: 'nested', value: makeDiffTree(oldValue, newValue) };
+    }
+    return {
+      key,
+      type: 'changed',
+      oldValue,
+      newValue,
+    };
   });
+  return result;
 };
 
 export default makeDiffTree;
