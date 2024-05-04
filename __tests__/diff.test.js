@@ -11,6 +11,7 @@ const readFile = (filename) => fs.readFileSync(getFixturePath(filename), 'utf-8'
 
 const expectedStylish = readFile('expectedStylish.txt');
 const expectedPlain = readFile('expectedPlain.txt');
+const expectedJson = readFile('expectedJson.txt');
 
 test('gendiff JSON', () => {
   const json1 = getFixturePath('file1.json');
@@ -18,6 +19,7 @@ test('gendiff JSON', () => {
   expect(genDiff(json1, json2)).toEqual(expectedStylish);
   expect(genDiff(json1, json2, 'stylish')).toEqual(expectedStylish);
   expect(genDiff(json1, json2, 'plain')).toEqual(expectedPlain);
+  expect(genDiff(json1, json2, 'json')).toEqual(expectedJson);
 });
 
 test('gendiff YAML', () => {
@@ -26,4 +28,5 @@ test('gendiff YAML', () => {
   expect(genDiff(yaml1, yaml2)).toEqual(expectedStylish);
   expect(genDiff(yaml1, yaml2, 'stylish')).toEqual(expectedStylish);
   expect(genDiff(yaml1, yaml2, 'plain')).toEqual(expectedPlain);
+  expect(genDiff(yaml1, yaml2, 'json')).toEqual(expectedJson);
 });
